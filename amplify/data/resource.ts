@@ -10,9 +10,11 @@ const schema = a
       })
       .authorization((allow) => [
         allow.ownerDefinedIn("profileOwner"),
-        allow.resource(postConfirmation),
       ]),
-  });
+  })
+  .authorization((allow) => [
+    allow.resource(postConfirmation),
+  ]);
 
 export type Schema = ClientSchema<typeof schema>;
 
