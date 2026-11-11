@@ -2,13 +2,14 @@ import type { PostConfirmationTriggerHandler } from "aws-lambda";
 import { type Schema } from "../../data/resource";
 import { generateClient } from "aws-amplify/data";
 import { Amplify } from "aws-amplify";
+import { env } from "$amplify/env/post-confirmation";
 
 Amplify.configure(
   {
     API: {
       GraphQL: {
-        endpoint: process.env.AMPLIFY_DATA_GRAPHQL_ENDPOINT || "",
-        region: process.env.AWS_REGION || "us-east-2",
+        endpoint: env.AMPLIFY_DATA_GRAPHQL_ENDPOINT,
+        region: env.AWS_REGION,
         defaultAuthMode: "iam",
       },
     },
@@ -18,9 +19,9 @@ Amplify.configure(
       credentialsProvider: {
         getCredentialsAndIdentityId: async () => ({
           credentials: {
-            accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
-            sessionToken: process.env.AWS_SESSION_TOKEN || "",
+            accessKeyId: env.AWS_ACCESS_KEY_ID,
+            secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+            sessionToken: env.AWS_SESSION_TOKEN,
           },
         }),
         clearCredentialsAndIdentityId: () => {},
