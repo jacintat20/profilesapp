@@ -13,9 +13,6 @@ import "@aws-amplify/ui-react/styles.css";
 import { generateClient } from "aws-amplify/data";
 import outputs from "../amplify_outputs.json";
 
-/**
- * @type {import('aws-amplify/data').Client<import('../amplify/data/resource').Schema>}
- */
 Amplify.configure(outputs);
 const client = generateClient({
   authMode: "userPool",
@@ -43,7 +40,7 @@ export default function App() {
       width="70%"
       margin="0 auto"
     >
-      <Heading level={1}>My Profile</Heading>
+      <Heading level={1}>Jacinta Thomas's Profile</Heading>
       <Divider />
       <Grid
         margin="3rem 0"
